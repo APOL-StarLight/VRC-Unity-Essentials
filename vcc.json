@@ -8,7 +8,7 @@
 		  "versions": {
 			"0.0.1": {
 			  "name": "vrchat.apolstar.vrcue",
-			  "url" : "ignore for now",
+			  "url" : "https://github.com/APOL-StarLight/VRC-Unity-Essentials/releases/download/0.0.1/-0.0.1.zip",
 			  "displayName": "VRChat Unity Essentials",
 			  "version": "0.0.1",
 			  "description": "A collection of essentials utilities for doing things in unity that are VRC Related",
