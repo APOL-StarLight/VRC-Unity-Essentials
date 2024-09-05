@@ -23,10 +23,12 @@ public class BoneCounterWindow : EditorWindow
 		EditorGUILayout.Space();
 
 		// Description
-		EditorGUILayout.HelpBox("This tool allows you to count the number of bones in an avatar based on VRChat's Avatar Performance Requirements."
-					  + " It excludes bones tagged as 'EditorOnly' and their child bones, which the official VRChat SDK does not account for."
-					  + " This can be especially useful when optimizing your avatar for VRChat, ensuring an accurate bone count for performance evaluation.",
-					  MessageType.Info);
+		// EditorGUILayout.HelpBox("This tool allows you to count the number of bones in an avatar based on VRChat's Avatar Performance Requirements."
+		// 			  + " It excludes bones tagged as 'EditorOnly' and their child bones, which the official VRChat SDK does not account for."
+		// 			  + " This can be especially useful when optimizing your avatar for VRChat, ensuring an accurate bone count for performance evaluation.",
+		// 			  MessageType.Info);
+
+		EditorGUILayout.HelpBox("This tool allows you to count the number of bones in your avatar, this excludes 'EditorOnly' bones and their children.", MessageType.Info);
 
 		EditorGUILayout.Space();
 

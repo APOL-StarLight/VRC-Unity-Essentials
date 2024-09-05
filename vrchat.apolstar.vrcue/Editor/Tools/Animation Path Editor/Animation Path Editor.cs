@@ -115,15 +115,13 @@ public class AnimationPathEditor : EditorWindow
 				foreach (var state in layer.stateMachine.states)
 				{
 					var clip = state.state.motion as AnimationClip;
-					if (clip != null)
-					{
-						int propertiesInClip = CountAffectedPropertiesInClip(clip);
-						if (propertiesInClip > 0)
-						{
-							affectedAnimations++;
-							propertyCount += propertiesInClip;
-						}
-					}
+					if (clip == null) continue;
+
+					int propertiesInClip = CountAffectedPropertiesInClip(clip);
+					if (propertiesInClip == 0) continue;
+
+					affectedAnimations++;
+					propertyCount += propertiesInClip;
 				}
 			}
 		}
