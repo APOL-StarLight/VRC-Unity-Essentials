@@ -7,6 +7,7 @@
 	"dependencies": {},
 	"gitDependencies": {},
 	"vpmDependencies": {},
+	"unity": "2022.3.22f1",
 	"author": {
 		"name": "Star and APOL Assets",
 		"email": "dont@email.me",
