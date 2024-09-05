@@ -16,29 +16,23 @@ public static class Credits
 
 	private static void LoadTextures()
 	{
-		if (!texturesLoaded)
-		{
+		if (texturesLoaded) return;
+	
+		XTexture = AssetDatabase.LoadAssetAtPath<Texture2D>("Packages/vrchat.apolstar.vrcue/common/UI/Images/UI_X.png");
+		GumroadTexture = AssetDatabase.LoadAssetAtPath<Texture2D>("Packages/vrchat.apolstar.vrcue/common/UI/Images/UI_Gumroad.png");
+		DiscordTexture = AssetDatabase.LoadAssetAtPath<Texture2D>("Packages/vrchat.apolstar.vrcue/common/UI/Images/UI_Discord.png");
 
-				XTexture = AssetDatabase.LoadAssetAtPath<Texture2D>("Packages/vrchat.apolstar.vrcue/common/UI/Images/UI_X.png");
-				GumroadTexture = AssetDatabase.LoadAssetAtPath<Texture2D>("Packages/vrchat.apolstar.vrcue/common/UI/Images/UI_Gumroad.png");
-				DiscordTexture = AssetDatabase.LoadAssetAtPath<Texture2D>("Packages/vrchat.apolstar.vrcue/common/UI/Images/UI_Discord.png");
+		if (XTexture == null) Debug.LogWarning("X Texture failed to load.");
+		if (GumroadTexture == null) Debug.LogWarning("Gumroad Texture failed to load.");
+		if (DiscordTexture == null) Debug.LogWarning("Discord Texture failed to load.");
 
-				if (XTexture != null) Debug.Log("XTexture loaded successfully.");
-				if (GumroadTexture != null) Debug.Log("GumroadTexture loaded successfully.");
-				if (DiscordTexture != null) Debug.Log("DiscordTexture loaded successfully.");
-
-				texturesLoaded = true;
-			else
-			{
-				Debug.LogError("Common UI textures failed to load.");
-			}
-		}
+		texturesLoaded = true;
 	}
 
 	private static void InitializeStyles()
 	{
-		if (iconButtonStyle == null) // Ensure the style is initialized
-		{
+		if (iconButtonStyle != null) return;
+
 		iconButtonStyle = new GUIStyle();
 		iconButtonStyle.normal.background = null; 
 		iconButtonStyle.active.background = null;
@@ -53,7 +47,6 @@ public static class Credits
 		iconButtonStyle.padding = new RectOffset(0, 0, 0, 0);
 		iconButtonStyle.overflow = new RectOffset(0, 0, 0, 0);
 		iconButtonStyle.alignment = TextAnchor.UpperCenter;
-		}
 	}
 
 
@@ -76,44 +69,33 @@ public static class Credits
 		InitializeStyles();
 
 		GUILayout.Space(10);
-		GUILayout.Box("", GUILayout.ExpandWidth(true), GUILayout.Height(1));  // Horizontal line
+		GUILayout.Box("", GUILayout.ExpandWidth(true), GUILayout.Height(1));
 		GUILayout.Label("Tool by " + name, EditorStyles.miniBoldLabel);
 
 		GUILayout.BeginHorizontal();
 		GUILayout.Label("", GUILayout.Width(10), GUILayout.Height(20));
 
-		if (XTexture != null)
+		if (XTexture != null && GUILayout.Button(XTexture, iconButtonStyle, GUILayout.Width(20), GUILayout.Height(20)))
 		{
-			if (GUILayout.Button(XTexture, iconButtonStyle, GUILayout.Width(20), GUILayout.Height(20)))
-			{
-				Application.OpenURL(twitter);
-			}
+			Application.OpenURL(twitter);
 		}
 
 		GUILayout.Label("", GUILayout.Width(10), GUILayout.Height(30));
 
-		if (DiscordTexture != null)
+		if (DiscordTexture != null && GUILayout.Button(DiscordTexture, iconButtonStyle, GUILayout.Width(20), GUILayout.Height(20)))
 		{
-			if (GUILayout.Button(DiscordTexture, iconButtonStyle, GUILayout.Width(20), GUILayout.Height(20)))
-			{
-				Application.OpenURL(discord);
-			}
+			Application.OpenURL(discord);
 		}
 
 		GUILayout.Label("", GUILayout.Width(10), GUILayout.Height(30));
 
-		if (GumroadTexture != null)
+		if (GumroadTexture != null && GUILayout.Button(GumroadTexture, iconButtonStyle, GUILayout.Width(20), GUILayout.Height(20)))
 		{
-			if (GUILayout.Button(GumroadTexture, iconButtonStyle, GUILayout.Width(20), GUILayout.Height(20)))
-			{
-				Application.OpenURL(gumroad);
-			}
+			Application.OpenURL(gumroad);
 		}
 
 		GUILayout.Label("", GUILayout.Width(10), GUILayout.Height(30));
 		GUILayout.EndHorizontal();
-
-
 	}
 }
 #endif
