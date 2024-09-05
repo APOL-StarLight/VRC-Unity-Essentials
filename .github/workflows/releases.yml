@@ -30,7 +30,7 @@ jobs:
     permissions:
       contents: write
     env:
-      packagePath: /
+      packagePath: /vrchat.apolstar.vrcue/
     if: needs.config.outputs.config_package == 'true'
     steps:
 
