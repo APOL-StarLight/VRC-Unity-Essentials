@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 
 namespace APOLStar.VRCUE.Common.Devs {
-	class DevProfile {
+	public class DevProfile {
 
 		public string name;
 		public string twitter;

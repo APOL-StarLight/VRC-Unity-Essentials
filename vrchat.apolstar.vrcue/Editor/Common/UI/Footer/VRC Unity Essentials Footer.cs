@@ -18,9 +18,9 @@ public static class Credits
 	{
 		if (texturesLoaded) return;
 	
-		XTexture = AssetDatabase.LoadAssetAtPath<Texture2D>("Packages/vrchat.apolstar.vrcue/common/UI/Images/UI_X.png");
-		GumroadTexture = AssetDatabase.LoadAssetAtPath<Texture2D>("Packages/vrchat.apolstar.vrcue/common/UI/Images/UI_Gumroad.png");
-		DiscordTexture = AssetDatabase.LoadAssetAtPath<Texture2D>("Packages/vrchat.apolstar.vrcue/common/UI/Images/UI_Discord.png");
+		XTexture = AssetDatabase.LoadAssetAtPath<Texture2D>("Packages/vrchat.apolstar.vrcue/Editor/Common/UI/Images/UI_X.png");
+		GumroadTexture = AssetDatabase.LoadAssetAtPath<Texture2D>("Packages/vrchat.apolstar.vrcue/Editor/Common/UI/Images/UI_Gumroad.png");
+		DiscordTexture = AssetDatabase.LoadAssetAtPath<Texture2D>("Packages/vrchat.apolstar.vrcue/Editor/Common/UI/Images/UI_Discord.png");
 
 		if (XTexture == null) Debug.LogWarning("X Texture failed to load.");
 		if (GumroadTexture == null) Debug.LogWarning("Gumroad Texture failed to load.");
@@ -50,7 +50,7 @@ public static class Credits
 	}
 
 
-	static void DrawFooter(DevProfile DevProfile) {
+	public static void DrawFooter(DevProfile DevProfile) {
 
 		if (DevProfile == null) {
 			DevProfile = new DevProfile("missing", "missing", "missing", "missing");
@@ -58,7 +58,7 @@ public static class Credits
 		DrawFooter(DevProfile.name, DevProfile.twitter, DevProfile.discord, DevProfile.gumroad);
 	}
 
-	static void DrawFooter(string name) {
+	public static void DrawFooter(string name) {
 		DrawFooter(DevProfile.Get(name));
 	}
 	public static void DrawFooter(string name, string twitter, string discord, string gumroad)

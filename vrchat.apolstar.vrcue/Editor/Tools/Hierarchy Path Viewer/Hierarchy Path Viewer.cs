@@ -45,7 +45,7 @@ public class HierarchyPathWindow : EditorWindow
 		{
 			UpdateHierarchyPath();
 		}
-		APOLFooterUtility.DrawFooter();
+		Credits.DrawFooter("APOL Assets");
 	}
 
 	private void OnSelectionChange()
