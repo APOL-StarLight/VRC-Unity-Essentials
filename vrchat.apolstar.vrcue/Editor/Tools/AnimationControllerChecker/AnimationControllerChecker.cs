@@ -5,6 +5,8 @@ using UnityEditor;
 using UnityEditor.Animations;
 using System.Collections.Generic;
 
+using APOLStar.VRCUE.Common.UI.Footer;
+
 public class AnimationControllerChecker : EditorWindow
 {
 	private AnimatorController animatorController;

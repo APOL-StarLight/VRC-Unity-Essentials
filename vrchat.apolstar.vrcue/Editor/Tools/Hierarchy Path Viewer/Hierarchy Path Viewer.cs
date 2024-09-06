@@ -2,6 +2,8 @@
 using UnityEngine;
 using UnityEditor;
 
+using APOLStar.VRCUE.Common.UI.Footer;
+
 public class HierarchyPathWindow : EditorWindow
 {
 	private string hierarchyPath = "";

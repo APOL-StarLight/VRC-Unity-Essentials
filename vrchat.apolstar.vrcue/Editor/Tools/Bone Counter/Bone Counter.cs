@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 
+using APOLStar.VRCUE.Common.UI.Footer;
+
 public class BoneCounterWindow : EditorWindow
 {
 	private GameObject avatar;

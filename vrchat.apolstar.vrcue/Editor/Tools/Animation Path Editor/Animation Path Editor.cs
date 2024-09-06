@@ -3,6 +3,8 @@ using UnityEditor;
 using UnityEngine;
 using UnityEditor.Animations;
 
+using APOLStar.VRCUE.Common.UI.Footer;
+
 public class AnimationPathEditor : EditorWindow
 {
 	private enum EditMode { Rename, Copy, Delete }
@@ -67,10 +69,8 @@ public class AnimationPathEditor : EditorWindow
 				break;
 		}
 
-		// Add space
 		EditorGUILayout.Space(20);
 
-		// Generate button
 		if (GUILayout.Button("Generate"))
 		{
 			if (animationObject != null)
