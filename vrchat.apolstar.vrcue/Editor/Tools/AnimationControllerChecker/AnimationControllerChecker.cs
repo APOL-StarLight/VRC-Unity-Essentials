@@ -67,7 +67,7 @@ public class AnimationControllerChecker : EditorWindow
 			}
 			EditorGUILayout.EndScrollView();
 		}
-		Credits.DrawFooter("APOL Assets");
+		APOLStar.VRCUE.Common.UI.Footer.DrawFooter("APOL Assets");
 	}
 
 	private void CheckEntireAnimatorController()

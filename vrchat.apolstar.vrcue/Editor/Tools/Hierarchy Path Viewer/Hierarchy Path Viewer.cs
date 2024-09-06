@@ -47,7 +47,7 @@ public class HierarchyPathWindow : EditorWindow
 		{
 			UpdateHierarchyPath();
 		}
-		Credits.DrawFooter("APOL Assets");
+		APOLStar.VRCUE.Common.UI.Footer.DrawFooter("APOL Assets");
 	}
 
 	private void OnSelectionChange()

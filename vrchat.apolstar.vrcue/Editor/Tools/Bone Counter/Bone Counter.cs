@@ -61,7 +61,7 @@ public class BoneCounterWindow : EditorWindow
 				SelectBonesInHierarchy();
 			}
 		}
-		Credits.DrawFooter("APOL Assets");
+		APOLStar.VRCUE.Common.UI.Footer.DrawFooter("APOL Assets");
 	}
 
 	private int CountBones(GameObject avatar)

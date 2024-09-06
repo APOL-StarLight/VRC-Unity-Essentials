@@ -48,7 +48,7 @@ public class FullHierarchyTransformCopier : EditorWindow
 			Debug.Log("Transform copying completed.");
 		}
 		GUI.backgroundColor = Color.white; 
-		Credits.DrawFooter("APOL Assets");
+		APOLStar.VRCUE.Common.UI.Footer.DrawFooter("APOL Assets");
 	}
 
 	private void CopyTransformRecursively(Transform copyFrom, Transform pasteInto)
