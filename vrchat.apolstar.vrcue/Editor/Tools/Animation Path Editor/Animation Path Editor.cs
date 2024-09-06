@@ -101,7 +101,7 @@ public class AnimationPathEditor : EditorWindow
 				EditorUtility.DisplayDialog("Error", "Please assign an Animation Controller or an Animation Clip.", "OK");
 			}
 		}
-		APOLStar.VRCUE.Common.UI.Footer.DrawFooter("APOL Assets");
+		APOLStar.VRCUE.Common.UI.Footer.Credits.DrawFooter("APOL Assets");
 	}
 
 	private int CountAffectedProperties(ref int affectedAnimations)

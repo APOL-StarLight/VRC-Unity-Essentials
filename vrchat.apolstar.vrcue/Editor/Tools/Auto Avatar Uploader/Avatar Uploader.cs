@@ -113,7 +113,7 @@ public class AutoAvatarUploader : EditorWindow
 		GUI.backgroundColor = Color.white;
 
 		GUILayout.Space(10);
-		APOLStar.VRCUE.Common.UI.Footer.DrawFooter("Star");
+		APOLStar.VRCUE.Common.UI.Footer.Credits.DrawFooter("Star");
 	}
 
 	private void DrawAvatarWithArrowButton(GameObject avatar, bool moveToUpload)
