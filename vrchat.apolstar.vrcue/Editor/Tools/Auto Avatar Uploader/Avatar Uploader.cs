@@ -26,7 +26,7 @@ public class AutoAvatarUploader : EditorWindow
     // Tracks whether an upload process is happening.
     private bool isUploading = false;
 
-    [MenuItem("Tools/Auto Avatar Uploader")]
+    [MenuItem("Tools/VRC Unity Essentials/Auto Avatar Uploader")]
     public static void ShowWindow()
     {
         GetWindow<AutoAvatarUploader>("Auto Avatar Uploader");
