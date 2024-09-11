@@ -17,6 +17,8 @@ public class AdvancedHierarchySearch : EditorWindow
     private List<string> activeSearchFilters = new List<string>();
     private List<string> suggestionList = new List<string>();
 
+    private Vector2 scrollPosition; // For scrolling suggestion list
+
     private const string componentsCsvPath = "Packages/vrchat.apolstar.vrcue/Editor/Tools/Advanced Hierarchy Search/SearchableComponents.csv";
     
     [MenuItem("Tools/VRC Unity Essentials/Advanced Hierarchy Search")]
@@ -55,13 +57,22 @@ public class AdvancedHierarchySearch : EditorWindow
 
         EditorGUILayout.Space();
 
-        // Display suggestions dynamically
-        foreach (var suggestion in suggestionList)
+        // Display suggestions dynamically in a scrollable view with a darker background
+        if (suggestionList.Count > 0)
         {
-            if (GUILayout.Button(suggestion))
+            EditorGUILayout.BeginVertical("box", GUILayout.Height(150)); // Darker background for suggestions
+            scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
+
+            foreach (var suggestion in suggestionList)
             {
-                AddSearchFilter(suggestion);
+                if (GUILayout.Button(suggestion, EditorStyles.label)) // Make suggestions look like selectable text
+                {
+                    AddSearchFilter(suggestion);
+                }
             }
+
+            EditorGUILayout.EndScrollView();
+            EditorGUILayout.EndVertical();
         }
 
         EditorGUILayout.Space();
@@ -100,34 +111,41 @@ public class AdvancedHierarchySearch : EditorWindow
     {
         suggestionList.Clear();
 
-        // 1. Always add "Search for '[searchQuery]'"
-        suggestionList.Add($"Search for '{searchQuery}'");
-
-        // 2. Add Active/Inactive options
-        if ("active".Contains(searchQuery, StringComparison.OrdinalIgnoreCase))
+        // Only suggest if there's input in the search bar
+        if (!string.IsNullOrEmpty(searchQuery))
         {
-            suggestionList.Add("Active Objects");
-        }
-        if ("inactive".Contains(searchQuery, StringComparison.OrdinalIgnoreCase))
-        {
-            suggestionList.Add("Inactive Objects");
-        }
-
-        // 3. Search for matching component types
-        foreach (var componentName in componentDisplayNames)
-        {
-            if (componentName.Contains(searchQuery, StringComparison.OrdinalIgnoreCase))
+            // 1. Add "Search for '[searchQuery]'" if not already in active filters
+            if (!activeSearchFilters.Contains($"Search for '{searchQuery}'"))
             {
-                suggestionList.Add($"Component: {componentName}");
+                suggestionList.Add($"Search for '{searchQuery}'");
             }
-        }
 
-        // 4. Search for matching tags
-        foreach (var tag in availableTags)
-        {
-            if (tag.Contains(searchQuery, StringComparison.OrdinalIgnoreCase))
+            // 2. Add Active/Inactive options if not in active filters
+            if ("active".Contains(searchQuery, StringComparison.OrdinalIgnoreCase) && !activeSearchFilters.Contains("Active Objects"))
             {
-                suggestionList.Add($"Tag: {tag}");
+                suggestionList.Add("Active Objects");
+            }
+            if ("inactive".Contains(searchQuery, StringComparison.OrdinalIgnoreCase) && !activeSearchFilters.Contains("Inactive Objects"))
+            {
+                suggestionList.Add("Inactive Objects");
+            }
+
+            // 3. Search for matching component types if not in active filters
+            foreach (var componentName in componentDisplayNames)
+            {
+                if (componentName.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) && !activeSearchFilters.Contains($"Component: {componentName}"))
+                {
+                    suggestionList.Add($"Component: {componentName}");
+                }
+            }
+
+            // 4. Search for matching tags if not in active filters
+            foreach (var tag in availableTags)
+            {
+                if (tag.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) && !activeSearchFilters.Contains($"Tag: {tag}"))
+                {
+                    suggestionList.Add($"Tag: {tag}");
+                }
             }
         }
     }
