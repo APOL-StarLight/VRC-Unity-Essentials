@@ -5,21 +5,19 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using APOLStar.VRCUE.Common.UI.Footer; // Import the footer for credits.
+using APOLStar.VRCUE.Common.UI.Footer;
 
 public class AdvancedHierarchySearch : EditorWindow
 {
     private string searchQuery = "";
     private GameObject limitToObject = null;
     private List<string> availableTags = new List<string>();
-    private List<string> selectedTags = new List<string>();
     private List<string> componentDisplayNames = new List<string>();
-    private List<string> selectedComponents = new List<string>();
     private List<Type> componentTypes = new List<Type>();
-    private bool searchActive = false; // Active/Inactive filter
-    private bool searchInactive = false;
+    private List<string> activeSearchFilters = new List<string>();
+    private List<string> suggestionList = new List<string>();
 
-    private const string componentsCsvPath = "Packages/vrchat.apolstar.vrcue/Editor/Tools/Advanced Hierarchy Search/SearchableComponents.csv"; // Path to the CSV file.
+    private const string componentsCsvPath = "Packages/vrchat.apolstar.vrcue/Editor/Tools/Advanced Hierarchy Search/SearchableComponents.csv";
     
     [MenuItem("Tools/VRC Unity Essentials/Advanced Hierarchy Search")]
     public static void ShowWindow()
@@ -29,53 +27,51 @@ public class AdvancedHierarchySearch : EditorWindow
 
     private void OnEnable()
     {
-        // Load available tags from the project.
         availableTags = UnityEditorInternal.InternalEditorUtility.tags.ToList();
-        
-        // Load component types from the CSV file.
         LoadComponentsFromCsv();
     }
 
     private void OnGUI()
     {
         // Helpbox explaining the tool.
-        EditorGUILayout.HelpBox("Use this tool to search for GameObjects in the hierarchy by name, tag, components, or activity status. You can also limit the search to a specific object in the hierarchy.", MessageType.Info);
+        EditorGUILayout.HelpBox("Use this tool to search for GameObjects by name, tag, components, or activity status. You can also limit the search to a specific hierarchy.", MessageType.Info);
 
-        // Search by Name
-        searchQuery = EditorGUILayout.TextField("Search by Name", searchQuery);
+        // Search Bar
+        EditorGUILayout.LabelField("Search");
+        string newSearchQuery = EditorGUILayout.TextField(searchQuery);
+        if (newSearchQuery != searchQuery)
+        {
+            searchQuery = newSearchQuery;
+            UpdateSuggestions();
+        }
+
+        // Display suggestions dynamically
+        foreach (var suggestion in suggestionList)
+        {
+            if (GUILayout.Button(suggestion))
+            {
+                AddSearchFilter(suggestion);
+            }
+        }
+
+        // Display active filters with 'X' button to remove
+        if (activeSearchFilters.Count > 0)
+        {
+            EditorGUILayout.LabelField("Active Filters:");
+            for (int i = 0; i < activeSearchFilters.Count; i++)
+            {
+                EditorGUILayout.BeginHorizontal();
+                EditorGUILayout.LabelField(activeSearchFilters[i]);
+                if (GUILayout.Button("X", GUILayout.Width(20)))
+                {
+                    activeSearchFilters.RemoveAt(i);
+                }
+                EditorGUILayout.EndHorizontal();
+            }
+        }
 
         // Limit Search To (Object Field)
         limitToObject = (GameObject)EditorGUILayout.ObjectField("Limit Search To", limitToObject, typeof(GameObject), true);
-
-        // Search by Tag
-        EditorGUILayout.LabelField("Search by Tags");
-        for (int i = 0; i < availableTags.Count; i++)
-        {
-            bool isSelected = selectedTags.Contains(availableTags[i]);
-            bool newIsSelected = EditorGUILayout.ToggleLeft(availableTags[i], isSelected);
-
-            if (newIsSelected && !isSelected)
-                selectedTags.Add(availableTags[i]);
-            else if (!newIsSelected && isSelected)
-                selectedTags.Remove(availableTags[i]);
-        }
-
-        // Search by Components (Multi-select)
-        EditorGUILayout.LabelField("Search by Components");
-        for (int i = 0; i < componentDisplayNames.Count; i++)
-        {
-            bool isSelected = selectedComponents.Contains(componentDisplayNames[i]);
-            bool newIsSelected = EditorGUILayout.ToggleLeft(componentDisplayNames[i], isSelected);
-
-            if (newIsSelected && !isSelected)
-                selectedComponents.Add(componentDisplayNames[i]);
-            else if (!newIsSelected && isSelected)
-                selectedComponents.Remove(componentDisplayNames[i]);
-        }
-
-        // Search Active/Inactive
-        searchActive = EditorGUILayout.Toggle("Search Active Objects", searchActive);
-        searchInactive = EditorGUILayout.Toggle("Search Inactive Objects", searchInactive);
 
         // Search Button
         if (GUILayout.Button("Search"))
@@ -83,8 +79,59 @@ public class AdvancedHierarchySearch : EditorWindow
             PerformSearch();
         }
 
-        // Display the footer credit
+        // Footer for credits
         APOLStar.VRCUE.Common.UI.Footer.Credits.DrawFooter("APOL Assets");
+    }
+
+    private void UpdateSuggestions()
+    {
+        suggestionList.Clear();
+
+        // 1. Search for matching GameObject names in the scene
+        GameObject[] allObjects = GameObject.FindObjectsOfType<GameObject>(true);
+        foreach (var obj in allObjects)
+        {
+            if (obj.name.Contains(searchQuery, StringComparison.OrdinalIgnoreCase))
+            {
+                suggestionList.Add($"Search for \"{obj.name}\"");
+            }
+        }
+
+        // 2. Add Active/Inactive options
+        if ("active".Contains(searchQuery, StringComparison.OrdinalIgnoreCase))
+        {
+            suggestionList.Add("Active Objects");
+        }
+        if ("inactive".Contains(searchQuery, StringComparison.OrdinalIgnoreCase))
+        {
+            suggestionList.Add("Inactive Objects");
+        }
+
+        // 3. Search for matching component types
+        foreach (var componentName in componentDisplayNames)
+        {
+            if (componentName.Contains(searchQuery, StringComparison.OrdinalIgnoreCase))
+            {
+                suggestionList.Add($"Component: {componentName}");
+            }
+        }
+
+        // 4. Search for matching tags
+        foreach (var tag in availableTags)
+        {
+            if (tag.Contains(searchQuery, StringComparison.OrdinalIgnoreCase))
+            {
+                suggestionList.Add($"Tag: {tag}");
+            }
+        }
+    }
+
+    private void AddSearchFilter(string filter)
+    {
+        if (!activeSearchFilters.Contains(filter))
+        {
+            activeSearchFilters.Add(filter);
+        }
     }
 
     private void LoadComponentsFromCsv()
@@ -120,43 +167,60 @@ public class AdvancedHierarchySearch : EditorWindow
 
     private void PerformSearch()
     {
-        // List to store search results
         List<GameObject> searchResults = new List<GameObject>();
 
-        // Get root objects in the scene
         GameObject[] allObjects = limitToObject != null ? limitToObject.GetComponentsInChildren<Transform>(true).Select(t => t.gameObject).ToArray() : GameObject.FindObjectsOfType<GameObject>(true);
 
         foreach (GameObject obj in allObjects)
         {
             bool matches = true;
 
-            // Filter by name
-            if (!string.IsNullOrEmpty(searchQuery) && !obj.name.Contains(searchQuery, StringComparison.OrdinalIgnoreCase))
+            foreach (string filter in activeSearchFilters)
             {
-                matches = false;
-            }
-
-            // Filter by tags
-            if (selectedTags.Count > 0 && !selectedTags.Contains(obj.tag))
-            {
-                matches = false;
-            }
-
-            // Filter by components
-            foreach (var componentName in selectedComponents)
-            {
-                Type componentType = componentTypes[componentDisplayNames.IndexOf(componentName)];
-                if (obj.GetComponent(componentType) == null)
+                if (filter.StartsWith("Search for"))
                 {
-                    matches = false;
-                    break;
+                    string objectName = filter.Substring(11).Trim('"');
+                    if (!obj.name.Contains(objectName))
+                    {
+                        matches = false;
+                        break;
+                    }
                 }
-            }
-
-            // Filter by active/inactive state
-            if ((searchActive && !obj.activeSelf) || (searchInactive && obj.activeSelf))
-            {
-                matches = false;
+                else if (filter.StartsWith("Component:"))
+                {
+                    string componentName = filter.Substring(11).Trim();
+                    Type componentType = componentTypes[componentDisplayNames.IndexOf(componentName)];
+                    if (obj.GetComponent(componentType) == null)
+                    {
+                        matches = false;
+                        break;
+                    }
+                }
+                else if (filter.StartsWith("Tag:"))
+                {
+                    string tagName = filter.Substring(5).Trim();
+                    if (!obj.CompareTag(tagName))
+                    {
+                        matches = false;
+                        break;
+                    }
+                }
+                else if (filter == "Active Objects")
+                {
+                    if (!obj.activeSelf)
+                    {
+                        matches = false;
+                        break;
+                    }
+                }
+                else if (filter == "Inactive Objects")
+                {
+                    if (obj.activeSelf)
+                    {
+                        matches = false;
+                        break;
+                    }
+                }
             }
 
             if (matches)
