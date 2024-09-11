@@ -1,0 +1,42 @@
+// Physics Components
+Rigidbody,UnityEngine.Rigidbody
+Collider,UnityEngine.Collider
+Box Collider,UnityEngine.BoxCollider
+Sphere Collider,UnityEngine.SphereCollider
+Capsule Collider,UnityEngine.CapsuleCollider
+Mesh Collider,UnityEngine.MeshCollider
+Cloth,UnityEngine.Cloth
+
+// Animation and Constraints Components
+Animator,UnityEngine.Animator
+Aim Constraint,UnityEngine.Animations.AimConstraint
+Look At Constraint,UnityEngine.Animations.LookAtConstraint
+Parent Constraint,UnityEngine.Animations.ParentConstraint
+Position Constraint,UnityEngine.Animations.PositionConstraint
+Rotation Constraint,UnityEngine.Animations.RotationConstraint
+Scale Constraint,UnityEngine.Animations.ScaleConstraint
+Animation,UnityEngine.Animation
+
+// Particle Systems and Rendering
+Particle System,UnityEngine.ParticleSystem
+Particle System Renderer,UnityEngine.ParticleSystemRenderer
+Trail Renderer,UnityEngine.TrailRenderer
+Line Renderer,UnityEngine.LineRenderer
+
+// Mesh and Rendering Components
+Mesh Filter,UnityEngine.MeshFilter
+Mesh Renderer,UnityEngine.MeshRenderer
+Skinned Mesh Renderer,UnityEngine.SkinnedMeshRenderer
+
+// Lighting and Visual Effects
+Light,UnityEngine.Light
+Flare Layer,UnityEngine.FlareLayer
+
+// Audio Components
+Audio Source,UnityEngine.AudioSource
+
+// Camera and Related Components
+Camera,UnityEngine.Camera
+
+// General and Transform Components
+Transform,UnityEngine.Transform

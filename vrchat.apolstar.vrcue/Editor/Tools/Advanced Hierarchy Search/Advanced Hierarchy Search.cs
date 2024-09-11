@@ -186,6 +186,7 @@ public class AdvancedHierarchySearch : EditorWindow
         }
     }
 
+    // Load components from the CSV file
     private void LoadComponentsFromCsv()
     {
         componentDisplayNames.Clear();
@@ -196,6 +197,12 @@ public class AdvancedHierarchySearch : EditorWindow
             string[] lines = File.ReadAllLines(componentsCsvPath);
             foreach (string line in lines)
             {
+                // Ignore comments and empty lines
+                if (line.StartsWith("//") || string.IsNullOrWhiteSpace(line))
+                {
+                    continue;
+                }
+
                 string[] values = line.Split(',');
                 if (values.Length == 2)
                 {
@@ -207,6 +214,10 @@ public class AdvancedHierarchySearch : EditorWindow
                     {
                         componentDisplayNames.Add(displayName);
                         componentTypes.Add(type);
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"Component type '{typeName}' not found.");
                     }
                 }
             }
