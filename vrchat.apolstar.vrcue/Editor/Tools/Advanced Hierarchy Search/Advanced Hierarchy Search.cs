@@ -130,21 +130,49 @@ public class AdvancedHierarchySearch : EditorWindow
                 suggestionList.Add("Inactive Objects");
             }
 
-            // 3. Search for matching component types if not in active filters
-            foreach (var componentName in componentDisplayNames)
+            // 3. Search for matching component types based on partial match
+            if ("component".Contains(searchQuery, StringComparison.OrdinalIgnoreCase) || searchQuery.Contains("Com", StringComparison.OrdinalIgnoreCase))
             {
-                if (componentName.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) && !activeSearchFilters.Contains($"Component: {componentName}"))
+                foreach (var componentName in componentDisplayNames)
                 {
-                    suggestionList.Add($"Component: {componentName}");
+                    if (!activeSearchFilters.Contains($"Component: {componentName}"))
+                    {
+                        suggestionList.Add($"Component: {componentName}");
+                    }
                 }
             }
 
-            // 4. Search for matching tags if not in active filters
-            foreach (var tag in availableTags)
+            // 4. Search for matching tags based on partial match
+            if ("tag".Contains(searchQuery, StringComparison.OrdinalIgnoreCase) || searchQuery.Contains("Tag", StringComparison.OrdinalIgnoreCase))
             {
-                if (tag.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) && !activeSearchFilters.Contains($"Tag: {tag}"))
+                foreach (var tag in availableTags)
                 {
-                    suggestionList.Add($"Tag: {tag}");
+                    if (!activeSearchFilters.Contains($"Tag: {tag}"))
+                    {
+                        suggestionList.Add($"Tag: {tag}");
+                    }
+                }
+            }
+
+            // 5. Otherwise, search for matching components and tags by content
+            else
+            {
+                // Suggest components containing the search term
+                foreach (var componentName in componentDisplayNames)
+                {
+                    if (componentName.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) && !activeSearchFilters.Contains($"Component: {componentName}"))
+                    {
+                        suggestionList.Add($"Component: {componentName}");
+                    }
+                }
+
+                // Suggest tags containing the search term
+                foreach (var tag in availableTags)
+                {
+                    if (tag.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) && !activeSearchFilters.Contains($"Tag: {tag}"))
+                    {
+                        suggestionList.Add($"Tag: {tag}");
+                    }
                 }
             }
         }
