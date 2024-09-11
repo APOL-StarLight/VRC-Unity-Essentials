@@ -87,15 +87,8 @@ public class AdvancedHierarchySearch : EditorWindow
     {
         suggestionList.Clear();
 
-        // 1. Search for matching GameObject names in the scene
-        GameObject[] allObjects = GameObject.FindObjectsOfType<GameObject>(true);
-        foreach (var obj in allObjects)
-        {
-            if (obj.name.Contains(searchQuery, StringComparison.OrdinalIgnoreCase))
-            {
-                suggestionList.Add($"Search for \"{obj.name}\"");
-            }
-        }
+        // 1. Always add "Search for '[searchQuery]'"
+        suggestionList.Add($"Search for '{searchQuery}'");
 
         // 2. Add Active/Inactive options
         if ("active".Contains(searchQuery, StringComparison.OrdinalIgnoreCase))
