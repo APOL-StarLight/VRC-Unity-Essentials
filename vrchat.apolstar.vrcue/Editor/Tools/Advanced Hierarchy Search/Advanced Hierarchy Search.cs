@@ -36,6 +36,14 @@ public class AdvancedHierarchySearch : EditorWindow
         // Helpbox explaining the tool.
         EditorGUILayout.HelpBox("Use this tool to search for GameObjects by name, tag, components, or activity status. You can also limit the search to a specific hierarchy.", MessageType.Info);
 
+        // Add space before each major section
+        EditorGUILayout.Space();
+
+        // Limit Search To (Object Field)
+        limitToObject = (GameObject)EditorGUILayout.ObjectField("Limit Search To", limitToObject, typeof(GameObject), true);
+
+        EditorGUILayout.Space();
+
         // Search Bar
         EditorGUILayout.LabelField("Search");
         string newSearchQuery = EditorGUILayout.TextField(searchQuery);
@@ -45,6 +53,8 @@ public class AdvancedHierarchySearch : EditorWindow
             UpdateSuggestions();
         }
 
+        EditorGUILayout.Space();
+
         // Display suggestions dynamically
         foreach (var suggestion in suggestionList)
         {
@@ -53,6 +63,8 @@ public class AdvancedHierarchySearch : EditorWindow
                 AddSearchFilter(suggestion);
             }
         }
+
+        EditorGUILayout.Space();
 
         // Display active filters with 'X' button to remove
         if (activeSearchFilters.Count > 0)
@@ -70,14 +82,15 @@ public class AdvancedHierarchySearch : EditorWindow
             }
         }
 
-        // Limit Search To (Object Field)
-        limitToObject = (GameObject)EditorGUILayout.ObjectField("Limit Search To", limitToObject, typeof(GameObject), true);
+        EditorGUILayout.Space();
 
         // Search Button
         if (GUILayout.Button("Search"))
         {
             PerformSearch();
         }
+
+        EditorGUILayout.Space();
 
         // Footer for credits
         APOLStar.VRCUE.Common.UI.Footer.Credits.DrawFooter("APOL Assets");
