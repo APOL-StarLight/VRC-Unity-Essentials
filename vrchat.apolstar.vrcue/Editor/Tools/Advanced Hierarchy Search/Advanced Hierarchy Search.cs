@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using APOLStar.VRCUE.Common.UI.Footer;
 
 public class AdvancedHierarchySearch : EditorWindow
@@ -209,7 +210,19 @@ public class AdvancedHierarchySearch : EditorWindow
                     string displayName = values[0];
                     string typeName = values[1];
 
+                    // Try to get the type from the name
                     Type type = Type.GetType(typeName);
+
+                    // If not found, search all loaded assemblies for the type
+                    if (type == null)
+                    {
+                        foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+                        {
+                            type = assembly.GetType(typeName);
+                            if (type != null) break;
+                        }
+                    }
+
                     if (type != null)
                     {
                         componentDisplayNames.Add(displayName);
@@ -219,6 +232,10 @@ public class AdvancedHierarchySearch : EditorWindow
                     {
                         Debug.LogWarning($"Component type '{typeName}' not found.");
                     }
+                }
+                else
+                {
+                    Debug.LogError($"Invalid CSV line format: {line}");
                 }
             }
         }
