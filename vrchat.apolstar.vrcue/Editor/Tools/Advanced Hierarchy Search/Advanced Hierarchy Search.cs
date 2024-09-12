@@ -85,10 +85,14 @@ public class AdvancedHierarchySearch : EditorWindow
 
         EditorGUILayout.Space();
 
-        // Display active filters with 'X' button to remove
+        // Display active filters with 'X' button to remove, with a dark panel background
         if (activeSearchFilters.Count > 0)
         {
             EditorGUILayout.LabelField("Active Filters:");
+            
+            EditorGUILayout.BeginVertical("box", GUILayout.Height(100)); // Darker background for active filters
+            scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
+            
             for (int i = 0; i < activeSearchFilters.Count; i++)
             {
                 EditorGUILayout.BeginHorizontal();
@@ -99,6 +103,9 @@ public class AdvancedHierarchySearch : EditorWindow
                 }
                 EditorGUILayout.EndHorizontal();
             }
+
+            EditorGUILayout.EndScrollView();
+            EditorGUILayout.EndVertical();
         }
 
         EditorGUILayout.Space();
