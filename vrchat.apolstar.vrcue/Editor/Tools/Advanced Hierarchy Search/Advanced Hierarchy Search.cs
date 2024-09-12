@@ -37,7 +37,7 @@ public class AdvancedHierarchySearch : EditorWindow
     private void OnGUI()
     {
         // Helpbox explaining the tool.
-        EditorGUILayout.HelpBox("Use this tool to search for GameObjects by name, tag, components, or activity status. You can also limit the search to a specific hierarchy.", MessageType.Info);
+        EditorGUILayout.HelpBox("Use this tool to search for GameObjects by name, tag, components, activity status, or missing scripts. You can also limit the search to a specific hierarchy.", MessageType.Info);
 
         // Add space before each major section
         EditorGUILayout.Space();
@@ -153,6 +153,12 @@ public class AdvancedHierarchySearch : EditorWindow
                         suggestionList.Add($"Tag: {tag}");
                     }
                 }
+            }
+
+            // Add Missing Scripts option
+            if ("missing scripts".Contains(searchQuery, StringComparison.OrdinalIgnoreCase) && !activeSearchFilters.Contains("Missing Scripts"))
+            {
+                suggestionList.Add("Missing Scripts");
             }
 
             // Suggest components and tags based on partial match
@@ -300,6 +306,20 @@ public class AdvancedHierarchySearch : EditorWindow
                     {
                         matches = false;
                         break;
+                    }
+                }
+                // Handle "Missing Scripts" filter: find objects with missing scripts
+                else if (filter == "Missing Scripts")
+                {
+                    matches = false; // Default to false until a missing script is found
+                    var components = obj.GetComponents<Component>();
+                    foreach (var component in components)
+                    {
+                        if (component == null) // Missing script detected
+                        {
+                            matches = true; // Mark as match and break
+                            break;
+                        }
                     }
                 }
             }
