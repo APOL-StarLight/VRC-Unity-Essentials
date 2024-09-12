@@ -2,7 +2,7 @@
 	"name": "vrchat.apolstar.vrcue",
 	"url" : "ignore for now",
 	"displayName": "VRChat Unity Essentials",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"description": "A collection of essentials utilities for doing things in unity that are VRC Related",
 	"dependencies": {},
 	"gitDependencies": {},
