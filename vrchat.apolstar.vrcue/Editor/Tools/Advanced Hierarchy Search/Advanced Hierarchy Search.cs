@@ -162,25 +162,29 @@ public class AdvancedHierarchySearch : EditorWindow
                 suggestionList.Add("Missing Scripts");
             }
 
-            // Suggest components and tags based on partial match
-            else
+            // Suggest VRC Fury components by their display name
+            foreach (var furyComponentName in vrcFuryComponents.Keys)
             {
-                // Suggest components containing the search term
-                foreach (var componentName in componentDisplayNames)
+                if (furyComponentName.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) && !activeSearchFilters.Contains(furyComponentName))
                 {
-                    if (componentName.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) && !activeSearchFilters.Contains($"Component: {componentName}"))
-                    {
-                        suggestionList.Add($"Component: {componentName}");
-                    }
+                    suggestionList.Add(furyComponentName);
                 }
+            }
 
-                // Suggest tags containing the search term
-                foreach (var tag in availableTags)
+            // Suggest components and tags based on partial match
+            foreach (var componentName in componentDisplayNames)
+            {
+                if (componentName.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) && !activeSearchFilters.Contains($"Component: {componentName}"))
                 {
-                    if (tag.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) && !activeSearchFilters.Contains($"Tag: {tag}"))
-                    {
-                        suggestionList.Add($"Tag: {tag}");
-                    }
+                    suggestionList.Add($"Component: {componentName}");
+                }
+            }
+
+            foreach (var tag in availableTags)
+            {
+                if (tag.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) && !activeSearchFilters.Contains($"Tag: {tag}"))
+                {
+                    suggestionList.Add($"Tag: {tag}");
                 }
             }
         }
