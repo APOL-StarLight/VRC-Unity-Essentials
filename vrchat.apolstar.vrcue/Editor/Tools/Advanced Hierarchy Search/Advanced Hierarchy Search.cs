@@ -165,6 +165,12 @@ public class AdvancedHierarchySearch : EditorWindow
                 suggestionList.Add("Active In Scene");
             }
 
+            // Add "Inactive In Scene" option
+            if ("inactive in scene".Contains(searchQuery, StringComparison.OrdinalIgnoreCase) && !activeSearchFilters.Contains("Inactive In Scene"))
+            {
+                suggestionList.Add("Inactive In Scene");
+            }
+
             // Suggest all components if any part of "component" is typed
             if ("component".Contains(searchQuery, StringComparison.OrdinalIgnoreCase) || searchQuery.Contains("com", StringComparison.OrdinalIgnoreCase))
             {
@@ -385,6 +391,15 @@ public class AdvancedHierarchySearch : EditorWindow
                         break;
                     }
                 }
+                // Handle "Inactive In Scene" filter
+                else if (filter == "Inactive In Scene")
+                {
+                    if (!IsInactiveInScene(obj))
+                    {
+                        matches = false;
+                        break;
+                    }
+                }
                 // Handle "Missing Scripts" filter: find objects with missing scripts
                 else if (filter == "Missing Scripts")
                 {
@@ -452,6 +467,21 @@ public class AdvancedHierarchySearch : EditorWindow
             current = current.parent;
         }
         return true;
+    }
+
+    // Helper method to check if the GameObject or any of its parents are inactive
+    private bool IsInactiveInScene(GameObject obj)
+    {
+        Transform current = obj.transform;
+        while (current != null)
+        {
+            if (!current.gameObject.activeInHierarchy)
+            {
+                return true;
+            }
+            current = current.parent;
+        }
+        return false;
     }
 }
 #endif
