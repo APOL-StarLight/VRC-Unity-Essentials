@@ -90,6 +90,9 @@ VRC Fury Fix Write Defaults,VF.Model.VRCFury,VF.Model.Feature.FixWriteDefaults
 VRC Fury Full Controller,VF.Model.VRCFury,VF.Model.Feature.FullController
 VRC Fury Gestures,VF.Model.VRCFury,VF.Model.Feature.GestureDriver
 VRC Fury Gizmo,VF.Model.VRCFury,VF.Model.Feature.Gizmo
+VRC Fury Global Collider,VF.Component.VRCFuryGlobalCollider
+VRC Fury Haptic Touch Reciever,VF.Component.VRCFuryHapticTouchReceiver
+VRC Fury Haptic Touch Sender,VF.Component.VRCFuryHapticTouchSender
 VRC Fury MMD Compatibility,VF.Model.VRCFury,VF.Model.Feature.MmdCompatibility
 VRC Fury Move of Rename Menu Item,VF.Model.VRCFury,VF.Model.Feature.MoveMenuItem
 VRC Fury Override Menu Icon,VF.Model.VRCFury,VF.Model.Feature.SetIcon
@@ -98,6 +101,8 @@ VRC Fury Remove Built-in Blinking,VF.Model.VRCFury,VF.Model.Feature.RemoveBlinki
 VRC Fury Remove Built-in Hand Gestures,VF.Model.VRCFury,VF.Model.Feature.RemoveHandGestures2
 VRC Fury Reorder Menu Item,VF.Model.VRCFury,VF.Model.Feature.ReorderMenuItem
 VRC Fury SPS Options,VF.Model.VRCFury,VF.Model.Feature.SpsOptions
+VRC Fury SPS Plug,VF.Component.VRCFuryHapticPlug
+VRC Fury SPS Socket,VF.Component.VRCFuryHapticSocket
 VRC Fury Security Pin Number,VF.Model.VRCFury,VF.Model.Feature.SecurityLock
 VRC Fury Security Restricted,VF.Model.VRCFury,VF.Model.Feature.SecurityRestricted
 VRC Fury Senky Gesture Driver,VF.Model.VRCFury,VF.Model.Feature.SenkyGestureDriver
