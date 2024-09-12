@@ -26,6 +26,9 @@ public class AdvancedHierarchySearch : EditorWindow
     // Variable to store the search result count
     private int searchResultCount = 0;
 
+    // Track if the search has been executed at least once
+    private bool hasSearched = false;
+
     [MenuItem("Tools/VRC Unity Essentials/Advanced Hierarchy Search")]
     public static void ShowWindow()
     {
@@ -103,17 +106,21 @@ public class AdvancedHierarchySearch : EditorWindow
         // Search Button
         if (GUILayout.Button("Search"))
         {
+            hasSearched = true;  // Mark that the search has been executed
             PerformSearch();
         }
 
         // Display the number of results found after the search
-        if (searchResultCount > 0)
+        if (hasSearched)
         {
-            EditorGUILayout.HelpBox($"Search found {searchResultCount} object(s).", MessageType.Info);
-        }
-        else if (searchResultCount == 0 && !string.IsNullOrEmpty(searchQuery))  // Show when no results found
-        {
-            EditorGUILayout.HelpBox("No objects found.", MessageType.Warning);
+            if (searchResultCount > 0)
+            {
+                EditorGUILayout.HelpBox($"Search found {searchResultCount} object(s).", MessageType.Info);
+            }
+            else
+            {
+                EditorGUILayout.HelpBox("No objects found.", MessageType.Warning);
+            }
         }
 
         EditorGUILayout.Space();
