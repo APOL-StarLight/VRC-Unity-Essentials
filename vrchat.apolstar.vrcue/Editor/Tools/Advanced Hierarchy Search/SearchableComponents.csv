@@ -74,3 +74,24 @@ VRC Station,VRC.SDK3.Avatars.Components.VRCStation
 Fury,VF.Model.VRCFury
 
 
+
+
+//=====Modular Avatar Components=====
+
+// Modular Avatar Components
+Modular Avatar Menu Install Target,nadena.dev.modular_avatar.core.ModularAvatarMenuInstallTarget
+Modular Avatar Blendshape Sync,nadena.dev.modular_avatar.core.ModularAvatarBlendshapeSync
+Modular Avatar Bone Proxy,nadena.dev.modular_avatar.core.ModularAvatarBoneProxy
+Modular Avatar Menu Group,nadena.dev.modular_avatar.core.ModularAvatarMenuGroup
+Modular Avatar World Fixed Object,nadena.dev.modular_avatar.core.ModularAvatarWorldFixedObject
+Modular Avatar Visible Head Accessory,nadena.dev.modular_avatar.core.ModularAvatarVisibleHeadAccessory
+Modular Avatar Scale Adjuster,nadena.dev.modular_avatar.core.ModularAvatarScaleAdjuster
+Modular Avatar Replace Object,nadena.dev.modular_avatar.core.ModularAvatarReplaceObject
+Modular Avatar PB Blocker,nadena.dev.modular_avatar.core.ModularAvatarPBBlocker
+Modular Avatar Parameters,nadena.dev.modular_avatar.core.ModularAvatarParameters
+Modular Avatar Mesh Settings,nadena.dev.modular_avatar.core.ModularAvatarMeshSettings
+Modular Avatar Merge Blend Tree,nadena.dev.modular_avatar.core.ModularAvatarMergeBlendTree
+Modular Avatar Merge Armature,nadena.dev.modular_avatar.core.ModularAvatarMergeArmature
+Modular Avatar Merge Animator,nadena.dev.modular_avatar.core.ModularAvatarMergeAnimator
+Modular Avatar Menu Item,nadena.dev.modular_avatar.core.ModularAvatarMenuItem
+Modular Avatar Menu Installer,nadena.dev.modular_avatar.core.ModularAvatarMenuInstaller
