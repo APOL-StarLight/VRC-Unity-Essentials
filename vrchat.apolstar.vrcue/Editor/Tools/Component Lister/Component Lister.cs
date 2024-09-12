@@ -9,6 +9,7 @@ public class ComponentLister : EditorWindow
 {
     private GameObject selectedObject = null;
     private List<string> componentNames = new List<string>();
+    private Vector2 scrollPosition; // Variable for storing scroll position
 
     [MenuItem("Tools/VRC Unity Essentials/Advanced/Component Lister")]
     public static void ShowWindow()
@@ -62,8 +63,9 @@ public class ComponentLister : EditorWindow
 
             EditorGUILayout.Space();
 
-            // Display the list of components and allow copying the names
+            // Display the list of components in a scrollable view
             EditorGUILayout.LabelField("Components on Selected Object:");
+            scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition, GUILayout.Height(200)); // Scrollable area with a fixed height
             foreach (string componentName in componentNames)
             {
                 EditorGUILayout.BeginHorizontal();
@@ -74,6 +76,7 @@ public class ComponentLister : EditorWindow
                 }
                 EditorGUILayout.EndHorizontal();
             }
+            EditorGUILayout.EndScrollView();
 
             // Add a "Copy All" button
             if (componentNames.Count > 0)
