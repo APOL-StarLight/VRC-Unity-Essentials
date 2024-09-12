@@ -21,7 +21,8 @@ public class AutoAvatarUploader : EditorWindow
 
 	private bool isUploading = false;
 
-	[MenuItem("Tools/VRC Unity Essentials/Auto Avatar Uploader")]
+
+	[MenuItem("Tools/VRC Unity Essentials/Auto Avatar Uploader",true)]//Temporarily Disabled
 	public static void ShowWindow()
 	{
 		GetWindow<AutoAvatarUploader>("Auto Avatar Uploader");
