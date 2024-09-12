@@ -115,13 +115,13 @@ public class AdvancedHierarchySearch : EditorWindow
         // Only suggest if there's input in the search bar
         if (!string.IsNullOrEmpty(searchQuery))
         {
-            // 1. Add "Search for '[searchQuery]'" if not already in active filters
+            // Always add "Search for '[searchQuery]'"
             if (!activeSearchFilters.Contains($"Search for '{searchQuery}'"))
             {
                 suggestionList.Add($"Search for '{searchQuery}'");
             }
 
-            // 2. Add Active/Inactive options if not in active filters
+            // Add Active/Inactive options if not in active filters
             if ("active".Contains(searchQuery, StringComparison.OrdinalIgnoreCase) && !activeSearchFilters.Contains("Active Objects"))
             {
                 suggestionList.Add("Active Objects");
@@ -131,8 +131,8 @@ public class AdvancedHierarchySearch : EditorWindow
                 suggestionList.Add("Inactive Objects");
             }
 
-            // 3. Search for matching component types based on partial match
-            if ("component".Contains(searchQuery, StringComparison.OrdinalIgnoreCase) || searchQuery.Contains("Com", StringComparison.OrdinalIgnoreCase))
+            // Suggest all components if any part of "component" is typed
+            if ("component".Contains(searchQuery, StringComparison.OrdinalIgnoreCase) || searchQuery.Contains("com", StringComparison.OrdinalIgnoreCase))
             {
                 foreach (var componentName in componentDisplayNames)
                 {
@@ -143,8 +143,8 @@ public class AdvancedHierarchySearch : EditorWindow
                 }
             }
 
-            // 4. Search for matching tags based on partial match
-            if ("tag".Contains(searchQuery, StringComparison.OrdinalIgnoreCase) || searchQuery.Contains("Tag", StringComparison.OrdinalIgnoreCase))
+            // Suggest all tags if any part of "tag" is typed
+            if ("tag".Contains(searchQuery, StringComparison.OrdinalIgnoreCase) || searchQuery.Contains("tag", StringComparison.OrdinalIgnoreCase))
             {
                 foreach (var tag in availableTags)
                 {
@@ -155,7 +155,7 @@ public class AdvancedHierarchySearch : EditorWindow
                 }
             }
 
-            // 5. Otherwise, search for matching components and tags by content
+            // Suggest components and tags based on partial match
             else
             {
                 // Suggest components containing the search term
@@ -257,10 +257,11 @@ public class AdvancedHierarchySearch : EditorWindow
 
             foreach (string filter in activeSearchFilters)
             {
+                // Handle "Search for" filter: find objects whose names contain the search term
                 if (filter.StartsWith("Search for"))
                 {
-                    string objectName = filter.Substring(11).Trim('"');
-                    if (!obj.name.Contains(objectName))
+                    string objectName = filter.Substring(11).Trim('\'');
+                    if (!obj.name.Contains(objectName, StringComparison.OrdinalIgnoreCase))
                     {
                         matches = false;
                         break;
