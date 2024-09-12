@@ -29,6 +29,9 @@ public class AdvancedHierarchySearch : EditorWindow
     // Track if the search has been executed at least once
     private bool hasSearched = false;
 
+    // Option to enable/disable logging for missing component types
+    private bool enableLogging = false;
+
     [MenuItem("Tools/VRC Unity Essentials/Advanced Hierarchy Search")]
     public static void ShowWindow()
     {
@@ -262,26 +265,36 @@ public class AdvancedHierarchySearch : EditorWindow
                     string typeName = values[1];
 
                     // Try to get the type from the name
-                    Type type = Type.GetType(typeName);
-
-                    // If not found, search all loaded assemblies for the type
-                    if (type == null)
+                    try
                     {
-                        foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+                        Type type = Type.GetType(typeName);
+
+                        // If not found, search all loaded assemblies for the type
+                        if (type == null)
                         {
-                            type = assembly.GetType(typeName);
-                            if (type != null) break;
+                            foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+                            {
+                                type = assembly.GetType(typeName);
+                                if (type != null) break;
+                            }
+                        }
+
+                        if (type != null)
+                        {
+                            componentDisplayNames.Add(displayName);
+                            componentTypes.Add(type);
+                        }
+                        else if (enableLogging)
+                        {
+                            Debug.LogWarning($"Component type '{typeName}' not found.");
                         }
                     }
-
-                    if (type != null)
+                    catch (Exception ex)
                     {
-                        componentDisplayNames.Add(displayName);
-                        componentTypes.Add(type);
-                    }
-                    else
-                    {
-                        Debug.LogWarning($"Component type '{typeName}' not found.");
+                        if (enableLogging)
+                        {
+                            Debug.LogWarning($"Error finding component type '{typeName}': {ex.Message}");
+                        }
                     }
                 }
                 // If the CSV contains three columns, it's a VRC Fury component with a content field
@@ -291,31 +304,44 @@ public class AdvancedHierarchySearch : EditorWindow
                     string typeName = values[1];
                     string contentField = values[2];
 
-                    // Try to get the type from the name
-                    Type type = Type.GetType(typeName);
-
-                    // If not found, search all loaded assemblies for the type
-                    if (type == null)
+                    try
                     {
-                        foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+                        // Try to get the type from the name
+                        Type type = Type.GetType(typeName);
+
+                        // If not found, search all loaded assemblies for the type
+                        if (type == null)
                         {
-                            type = assembly.GetType(typeName);
-                            if (type != null) break;
+                            foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+                            {
+                                type = assembly.GetType(typeName);
+                                if (type != null) break;
+                            }
+                        }
+
+                        if (type != null)
+                        {
+                            vrcFuryComponents[displayName] = (type, contentField);
+                        }
+                        else if (enableLogging)
+                        {
+                            Debug.LogWarning($"VRC Fury component type '{typeName}' not found.");
                         }
                     }
-
-                    if (type != null)
+                    catch (Exception ex)
                     {
-                        vrcFuryComponents[displayName] = (type, contentField);
-                    }
-                    else
-                    {
-                        Debug.LogWarning($"VRC Fury component type '{typeName}' not found.");
+                        if (enableLogging)
+                        {
+                            Debug.LogWarning($"Error finding VRC Fury component type '{typeName}': {ex.Message}");
+                        }
                     }
                 }
                 else
                 {
-                    Debug.LogError($"Invalid CSV line format: {line}");
+                    if (enableLogging)
+                    {
+                        Debug.LogError($"Invalid CSV line format: {line}");
+                    }
                 }
             }
         }
