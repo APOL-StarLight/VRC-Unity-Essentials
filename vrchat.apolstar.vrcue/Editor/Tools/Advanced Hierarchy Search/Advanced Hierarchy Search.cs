@@ -23,6 +23,9 @@ public class AdvancedHierarchySearch : EditorWindow
 
     private const string componentsCsvPath = "Packages/vrchat.apolstar.vrcue/Editor/Tools/Advanced Hierarchy Search/SearchableComponents.csv";
 
+    // Variable to store the search result count
+    private int searchResultCount = 0;
+
     [MenuItem("Tools/VRC Unity Essentials/Advanced Hierarchy Search")]
     public static void ShowWindow()
     {
@@ -101,6 +104,16 @@ public class AdvancedHierarchySearch : EditorWindow
         if (GUILayout.Button("Search"))
         {
             PerformSearch();
+        }
+
+        // Display the number of results found after the search
+        if (searchResultCount > 0)
+        {
+            EditorGUILayout.HelpBox($"Search found {searchResultCount} object(s).", MessageType.Info);
+        }
+        else if (searchResultCount == 0 && !string.IsNullOrEmpty(searchQuery))  // Show when no results found
+        {
+            EditorGUILayout.HelpBox("No objects found.", MessageType.Warning);
         }
 
         EditorGUILayout.Space();
@@ -405,8 +418,10 @@ public class AdvancedHierarchySearch : EditorWindow
             }
         }
 
-        // Output the number of results and select them in the scene
-        Debug.Log($"Search found {searchResults.Count} results.");
+        // Store the result count and output it in the scene
+        searchResultCount = searchResults.Count;
+
+        Debug.Log($"Search found {searchResultCount} result(s).");
         Selection.objects = searchResults.ToArray();
     }
 
