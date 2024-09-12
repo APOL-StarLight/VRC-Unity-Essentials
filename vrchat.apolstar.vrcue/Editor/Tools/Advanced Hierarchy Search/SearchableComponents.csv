@@ -48,7 +48,21 @@ Transform,UnityEngine.Transform
 
 //=====VRC Components=====
 
-
+VRC Avatar Descriptor,VRC.SDK3.Avatars.Components.VRCAvatarDescriptor
+VRC Aim Constraint,VRC.SDK3.Dynamics.Constraint.Components.VRCAimConstraint
+VRC Look At Constraint,VRC.SDK3.Dynamics.Constraint.Components.VRCLookAtConstraint
+VRC Scale Constraint,VRC.SDK3.Dynamics.Constraint.Components.VRCScaleConstraint
+VRC Parent Constraint,VRC.SDK3.Dynamics.Constraint.Components.VRCParentConstraint
+VRC Position Constraint,VRC.SDK3.Dynamics.Constraint.Components.VRCPositionConstraint
+VRC Rotation Constraint,VRC.SDK3.Dynamics.Constraint.Components.VRCRotationConstraint
+VRC Contact Receiver,VRC.SDK3.Dynamics.Contact.Components.VRCContactReceiver
+VRC Contact Sender,VRC.SDK3.Dynamics.Contact.Components.VRCContactSender
+VRC Head Chop,VRC.SDK3.Avatars.Components.VRCHeadChop
+VRC PhysBone,VRC.SDK3.Dynamics.PhysBone.Components.VRCPhysBone
+VRC PhysBone Collider,VRC.SDK3.Dynamics.PhysBone.Components.VRCPhysBoneCollider
+VRC Pipeline Manager,VRC.Core.PipelineManager
+VRC Spatial Audio Source,VRC.SDK3.Avatars.Components.VRCSpatialAudioSource
+VRC Station,VRC.SDK3.Avatars.Components.VRCStation
 
 
 
