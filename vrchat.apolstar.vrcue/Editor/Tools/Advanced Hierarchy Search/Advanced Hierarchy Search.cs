@@ -17,11 +17,12 @@ public class AdvancedHierarchySearch : EditorWindow
     private List<Type> componentTypes = new List<Type>();
     private List<string> activeSearchFilters = new List<string>();
     private List<string> suggestionList = new List<string>();
+    private Dictionary<string, (Type componentType, string contentField)> vrcFuryComponents = new Dictionary<string, (Type, string)>();
 
     private Vector2 scrollPosition; // For scrolling suggestion list
 
     private const string componentsCsvPath = "Packages/vrchat.apolstar.vrcue/Editor/Tools/Advanced Hierarchy Search/SearchableComponents.csv";
-    
+
     [MenuItem("Tools/VRC Unity Essentials/Advanced Hierarchy Search")]
     public static void ShowWindow()
     {
@@ -198,6 +199,7 @@ public class AdvancedHierarchySearch : EditorWindow
     {
         componentDisplayNames.Clear();
         componentTypes.Clear();
+        vrcFuryComponents.Clear();
 
         if (File.Exists(componentsCsvPath))
         {
@@ -237,6 +239,35 @@ public class AdvancedHierarchySearch : EditorWindow
                     else
                     {
                         Debug.LogWarning($"Component type '{typeName}' not found.");
+                    }
+                }
+                // If the CSV contains three columns, it's a VRC Fury component with a content field
+                else if (values.Length == 3)
+                {
+                    string displayName = values[0];
+                    string typeName = values[1];
+                    string contentField = values[2];
+
+                    // Try to get the type from the name
+                    Type type = Type.GetType(typeName);
+
+                    // If not found, search all loaded assemblies for the type
+                    if (type == null)
+                    {
+                        foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+                        {
+                            type = assembly.GetType(typeName);
+                            if (type != null) break;
+                        }
+                    }
+
+                    if (type != null)
+                    {
+                        vrcFuryComponents[displayName] = (type, contentField);
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"VRC Fury component type '{typeName}' not found.");
                     }
                 }
                 else
@@ -320,6 +351,31 @@ public class AdvancedHierarchySearch : EditorWindow
                             matches = true; // Mark as match and break
                             break;
                         }
+                    }
+                }
+                // Handle VRC Fury components with content field
+                else if (vrcFuryComponents.ContainsKey(filter))
+                {
+                    var (componentType, contentField) = vrcFuryComponents[filter];
+                    var vrcFuryComponent = obj.GetComponent(componentType);
+                    if (vrcFuryComponent != null)
+                    {
+                        // Use reflection to access the 'content' field
+                        var fieldInfo = componentType.GetField("content", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+                        if (fieldInfo != null)
+                        {
+                            object contentValue = fieldInfo.GetValue(vrcFuryComponent);
+                            if (contentValue == null || contentValue.GetType().FullName != contentField)
+                            {
+                                matches = false;
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        matches = false;
+                        break;
                     }
                 }
             }
