@@ -53,7 +53,7 @@ public class ComponentLister : EditorWindow
     private void OnGUI()
     {
         // Display helpbox explaining the tool
-        EditorGUILayout.HelpBox("This tool displays the list of components on the selected GameObject. You can copy component names by clicking on them.", MessageType.Info);
+        EditorGUILayout.HelpBox("This tool displays the list of components on the selected GameObject.", MessageType.Info);
 
         // Show the selected object's name
         if (selectedObject != null)
