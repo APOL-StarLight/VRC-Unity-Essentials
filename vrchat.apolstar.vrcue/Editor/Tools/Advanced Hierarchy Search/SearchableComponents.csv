@@ -74,11 +74,45 @@ VRC Station,VRC.SDK3.Avatars.Components.VRCStation
 Fury,VF.Model.VRCFury
 
 
+VRC Fury Visemes,VF.Model.VRCFury,VF.Model.Feature.Visemes
+VRC Fury Anchor Override Fix 2,VF.Model.VRCFury,VF.Model.Feature.AnchorOverrideFix2
+VRC Fury Apply During Upload,VF.Model.VRCFury,VF.Model.Feature.ApplyDuringUpload
+VRC Fury Armature Link,VF.Model.VRCFury,VF.Model.Feature.ArmatureLink
+VRC Fury BlendShape Link,VF.Model.VRCFury,VF.Model.Feature.BlendShapeLink
+VRC Fury Blendshape Optimizer,VF.Model.VRCFury,VF.Model.Feature.BlendshapeOptimizer
+VRC Fury Blinking,VF.Model.VRCFury,VF.Model.Feature.Blinking
+VRC Fury Cross Eye Fix 2,VF.Model.VRCFury,VF.Model.Feature.CrossEyeFix2
+VRC Fury Delete During Upload,VF.Model.VRCFury,VF.Model.Feature.DeleteDuringUpload
+VRC Fury Descriptor Debug,VF.Model.VRCFury,VF.Model.Feature.DescriptorDebug
+VRC Fury Direct Tree Optimizer,VF.Model.VRCFury,VF.Model.Feature.DirectTreeOptimizer
+VRC Fury World Constraint,VF.Model.VRCFury,VF.Model.Feature.WorldConstraint
+VRC Fury Fix Write Defaults,VF.Model.VRCFury,VF.Model.Feature.FixWriteDefaults
+VRC Fury Full Controller,VF.Model.VRCFury,VF.Model.Feature.FullController
+VRC Fury Gesture Driver,VF.Model.VRCFury,VF.Model.Feature.GestureDriver
+VRC Fury Gizmo,VF.Model.VRCFury,VF.Model.Feature.Gizmo
+VRC Fury MMD Compatibility,VF.Model.VRCFury,VF.Model.Feature.MmdCompatibility
+VRC Fury Move Menu Item,VF.Model.VRCFury,VF.Model.Feature.MoveMenuItem
+VRC Fury Set Icon,VF.Model.VRCFury,VF.Model.Feature.SetIcon
+VRC Fury Override Menu Settings,VF.Model.VRCFury,VF.Model.Feature.OverrideMenuSettings
+VRC Fury Remove Blinking,VF.Model.VRCFury,VF.Model.Feature.RemoveBlinking
+VRC Fury Remove Hand Gestures 2,VF.Model.VRCFury,VF.Model.Feature.RemoveHandGestures2
+VRC Fury Reorder Menu Item,VF.Model.VRCFury,VF.Model.Feature.ReorderMenuItem
+VRC Fury SPS Options,VF.Model.VRCFury,VF.Model.Feature.SpsOptions
+VRC Fury Security Lock,VF.Model.VRCFury,VF.Model.Feature.SecurityLock
+VRC Fury Security Restricted,VF.Model.VRCFury,VF.Model.Feature.SecurityRestricted
+VRC Fury Senky Gesture Driver,VF.Model.VRCFury,VF.Model.Feature.SenkyGestureDriver
+VRC Fury Show In First Person,VF.Model.VRCFury,VF.Model.Feature.ShowInFirstPerson
+VRC Fury Toes,VF.Model.VRCFury,VF.Model.Feature.Toes
+VRC Fury Toggle,VF.Model.VRCFury,VF.Model.Feature.Toggle
+VRC Fury Unlimited Parameters,VF.Model.VRCFury,VF.Model.Feature.UnlimitedParameters
+VRC Fury Talking,VF.Model.VRCFury,VF.Model.Feature.Talking
+
+
+
 
 
 //=====Modular Avatar Components=====
 
-// Modular Avatar Components
 Modular Avatar Menu Install Target,nadena.dev.modular_avatar.core.ModularAvatarMenuInstallTarget
 Modular Avatar Blendshape Sync,nadena.dev.modular_avatar.core.ModularAvatarBlendshapeSync
 Modular Avatar Bone Proxy,nadena.dev.modular_avatar.core.ModularAvatarBoneProxy
@@ -98,7 +132,7 @@ Modular Avatar Menu Installer,nadena.dev.modular_avatar.core.ModularAvatarMenuIn
 
 
 
-// Final IK Components
+// ======Final IK Components=====
 Transform,UnityEngine.Transform
 Final IK Aim IK,RootMotion.FinalIK.AimIK
 Final IK Biped IK,RootMotion.FinalIK.BipedIK
