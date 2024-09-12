@@ -53,7 +53,7 @@ public class ComponentLister : EditorWindow
     private void OnGUI()
     {
         // Display helpbox explaining the tool
-        EditorGUILayout.HelpBox("This tool displays the list of components on the selected GameObject.", MessageType.Info);
+        EditorGUILayout.HelpBox("This tool displays the list of components on the selected GameObject. You can copy component names by clicking on them or copy all using the 'Copy All' button.", MessageType.Info);
 
         // Show the selected object's name
         if (selectedObject != null)
@@ -73,6 +73,16 @@ public class ComponentLister : EditorWindow
                     EditorGUIUtility.systemCopyBuffer = componentName; // Copy the component name to the clipboard
                 }
                 EditorGUILayout.EndHorizontal();
+            }
+
+            // Add a "Copy All" button
+            if (componentNames.Count > 0)
+            {
+                EditorGUILayout.Space();
+                if (GUILayout.Button("Copy All"))
+                {
+                    EditorGUIUtility.systemCopyBuffer = string.Join("\n", componentNames); // Copy all component names, each on a new line
+                }
             }
         }
         else
