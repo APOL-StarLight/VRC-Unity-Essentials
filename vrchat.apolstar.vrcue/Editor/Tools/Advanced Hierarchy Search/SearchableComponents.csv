@@ -95,3 +95,35 @@ Modular Avatar Merge Armature,nadena.dev.modular_avatar.core.ModularAvatarMergeA
 Modular Avatar Merge Animator,nadena.dev.modular_avatar.core.ModularAvatarMergeAnimator
 Modular Avatar Menu Item,nadena.dev.modular_avatar.core.ModularAvatarMenuItem
 Modular Avatar Menu Installer,nadena.dev.modular_avatar.core.ModularAvatarMenuInstaller
+
+
+
+// Final IK Components
+Transform,UnityEngine.Transform
+Final IK Aim IK,RootMotion.FinalIK.AimIK
+Final IK Biped IK,RootMotion.FinalIK.BipedIK
+Final IK CCD IK,RootMotion.FinalIK.CCDIK
+Final IK FABRIK,RootMotion.FinalIK.FABRIK
+Final IK FABRIK Root,RootMotion.FinalIK.FABRIKRoot
+Final IK Arm Bending (FBBIK),RootMotion.FinalIK.FBBIKArmBending
+Final IK Head Effector (FBBIK),RootMotion.FinalIK.FBBIKHeadEffector
+Final IK Full Body Biped IK,RootMotion.FinalIK.FullBodyBipedIK
+Final IK Grounder FBBIK,RootMotion.FinalIK.GrounderFBBIK
+Final IK Grounder IK,RootMotion.FinalIK.GrounderIK
+Final IK Grounder Quadruped,RootMotion.FinalIK.GrounderQuadruped
+Final IK Grounder VRIK,RootMotion.FinalIK.GrounderVRIK
+Final IK IK Execution Order,RootMotion.FinalIK.IKExecutionOrder
+Final IK Leg IK,RootMotion.FinalIK.LegIK
+Final IK Limb IK,RootMotion.FinalIK.LimbIK
+Final IK Look At IK,RootMotion.FinalIK.LookAtIK
+Final IK Rotation Limit Angle,RootMotion.FinalIK.RotationLimitAngle
+Final IK Rotation Limit Hinge,RootMotion.FinalIK.RotationLimitHinge
+Final IK Rotation Limit Polygonal,RootMotion.FinalIK.RotationLimitPolygonal
+Final IK Rotation Limit Spline,RootMotion.FinalIK.RotationLimitSpline
+Final IK Trigonometric IK,RootMotion.FinalIK.TrigonometricIK
+Final IK Twist Relaxer,RootMotion.FinalIK.TwistRelaxer
+Final IK VRIK,RootMotion.FinalIK.VRIK
+
+
+
+
