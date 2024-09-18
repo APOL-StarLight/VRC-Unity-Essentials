@@ -175,7 +175,7 @@ public class AdvancedHierarchySearch : EditorWindow
 			}
 
 			// Suggest all components if any part of "component" is typed
-			if ("component".Contains(searchQuery, StringComparison.OrdinalIgnoreCase))
+			if ("component: ".Contains(searchQuery, StringComparison.OrdinalIgnoreCase))
 			{
 				foreach (var componentName in componentDisplayNames)
 				{
@@ -187,7 +187,7 @@ public class AdvancedHierarchySearch : EditorWindow
 			}
 
 			// Suggest all tags if any part of "tag" is typed
-			if ("tag".Contains(searchQuery, StringComparison.OrdinalIgnoreCase) || searchQuery.Contains("tag", StringComparison.OrdinalIgnoreCase))
+			if ("tag: ".Contains(searchQuery, StringComparison.OrdinalIgnoreCase))
 			{
 				foreach (var tag in availableTags)
 				{
