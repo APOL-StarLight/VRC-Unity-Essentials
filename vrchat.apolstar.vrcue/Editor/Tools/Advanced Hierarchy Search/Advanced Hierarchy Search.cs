@@ -148,10 +148,7 @@ public class AdvancedHierarchySearch : EditorWindow
 		if (!string.IsNullOrEmpty(searchQuery))
 		{
 			// Always add "Search for '[searchQuery]'"
-			if (!activeSearchFilters.Contains($"Search for '{searchQuery}'"))
-			{
-				suggestionList.Add($"Search for '{searchQuery}'");
-			}
+				suggestionList.Add($"Search Name Containing: '{searchQuery}'");
 
 			// Add Active/Inactive options if not in active filters
 			if ("active".Contains(searchQuery, StringComparison.OrdinalIgnoreCase) && !activeSearchFilters.Contains("Active Objects"))
@@ -372,9 +369,9 @@ public class AdvancedHierarchySearch : EditorWindow
 			foreach (string filter in activeSearchFilters)
 			{
 				// Handle "Search for" filter: find objects whose names contain the search term
-				if (filter.StartsWith("Search for"))
+				if (filter.StartsWith("Search Name Containing: '"))
 				{
-					string objectName = filter.Substring(11).Trim('\'');
+					string objectName = filter.Substring(25).Trim('\'');
 					if (!obj.name.Contains(objectName, StringComparison.OrdinalIgnoreCase))
 					{
 						matches = false;
