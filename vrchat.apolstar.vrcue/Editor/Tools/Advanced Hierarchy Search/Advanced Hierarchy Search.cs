@@ -71,9 +71,10 @@ public class AdvancedHierarchySearch : EditorWindow
 		// Display suggestions dynamically in a scrollable view with a darker background
 		if (suggestionList.Count > 0)
 		{
-			EditorGUILayout.BeginVertical("box", GUILayout.Height(150)); // Darker background for suggestions
-			scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
+			// Maintain scroll position correctly
+			scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition, GUILayout.Height(150)); // Adjust the scroll height
 
+			EditorGUILayout.BeginVertical("box"); // Darker background for suggestions
 			foreach (var suggestion in suggestionList)
 			{
 				if (GUILayout.Button(suggestion, EditorStyles.label)) // Make suggestions look like selectable text
@@ -82,8 +83,8 @@ public class AdvancedHierarchySearch : EditorWindow
 				}
 			}
 
+   			EditorGUILayout.EndVertical();
 			EditorGUILayout.EndScrollView();
-			EditorGUILayout.EndVertical();
 		}
 
 		EditorGUILayout.Space();
