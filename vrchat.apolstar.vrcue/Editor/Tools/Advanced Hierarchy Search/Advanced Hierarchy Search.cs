@@ -175,7 +175,7 @@ public class AdvancedHierarchySearch : EditorWindow
 			}
 
 			// Suggest all components if any part of "component" is typed
-			if ("component".Contains(searchQuery, StringComparison.OrdinalIgnoreCase) || searchQuery.Contains("com", StringComparison.OrdinalIgnoreCase))
+			if ("component".Contains(searchQuery, StringComparison.OrdinalIgnoreCase))
 			{
 				foreach (var componentName in componentDisplayNames)
 				{
