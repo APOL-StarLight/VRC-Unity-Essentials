@@ -184,6 +184,13 @@ public class AdvancedHierarchySearch : EditorWindow
 						suggestionList.Add($"Component: {componentName}");
 					}
 				}
+				foreach (var furyComponentName in vrcFuryComponents.Keys)
+				{
+					if (!activeSearchFilters.Contains($"Component: {furyComponentName}"))
+					{
+						suggestionList.Add($"Component: {furyComponentName}");
+					}
+				}
 			}
 
 			// Suggest all tags if any part of "tag" is typed
@@ -207,9 +214,9 @@ public class AdvancedHierarchySearch : EditorWindow
 			// Suggest VRC Fury components by their display name
 			foreach (var furyComponentName in vrcFuryComponents.Keys)
 			{
-				if (furyComponentName.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) && !activeSearchFilters.Contains(furyComponentName))
+				if (furyComponentName.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) && !activeSearchFilters.Contains($"Component: {furyComponentName}"))
 				{
-					suggestionList.Add(furyComponentName);
+					suggestionList.Add($"Component: {furyComponentName}");
 				}
 			}
 
@@ -373,6 +380,31 @@ public class AdvancedHierarchySearch : EditorWindow
 						break;
 					}
 				}
+				//subtract "Component: " from the filter 
+				else if (vrcFuryComponents.ContainsKey(filter.Substring(11)))
+				{
+					var (componentType, contentField) = vrcFuryComponents[filter.Substring(11)];
+					var vrcFuryComponent = obj.GetComponent(componentType);
+					if (vrcFuryComponent != null)
+					{
+						// Use reflection to access the 'content' field
+						var fieldInfo = componentType.GetField("content", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+						if (fieldInfo != null)
+						{
+							object contentValue = fieldInfo.GetValue(vrcFuryComponent);
+							if (contentValue == null || contentValue.GetType().FullName != contentField)
+							{
+								matches = false;
+								break;
+							}
+						}
+					}
+					else
+					{
+						matches = false;
+						break;
+					}
+				}
 				else if (filter.StartsWith("Component:"))
 				{
 					string componentName = filter.Substring(11).Trim();
@@ -441,30 +473,8 @@ public class AdvancedHierarchySearch : EditorWindow
 					}
 				}
 				// Handle VRC Fury components with content field
-				else if (vrcFuryComponents.ContainsKey(filter))
-				{
-					var (componentType, contentField) = vrcFuryComponents[filter];
-					var vrcFuryComponent = obj.GetComponent(componentType);
-					if (vrcFuryComponent != null)
-					{
-						// Use reflection to access the 'content' field
-						var fieldInfo = componentType.GetField("content", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
-						if (fieldInfo != null)
-						{
-							object contentValue = fieldInfo.GetValue(vrcFuryComponent);
-							if (contentValue == null || contentValue.GetType().FullName != contentField)
-							{
-								matches = false;
-								break;
-							}
-						}
-					}
-					else
-					{
-						matches = false;
-						break;
-					}
-				}
+				//subtract "Component: " from the filter
+				
 			}
 
 			if (matches)
