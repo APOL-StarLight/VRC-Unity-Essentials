@@ -10,14 +10,16 @@ Capsule Collider,UnityEngine.CapsuleCollider
 Mesh Collider,UnityEngine.MeshCollider
 Cloth,UnityEngine.Cloth
 
-// Animation and Constraints Components
-Animator,UnityEngine.Animator
+//Constraints Components
 Unity Aim Constraint,UnityEngine.Animations.AimConstraint
 Unity Look At Constraint,UnityEngine.Animations.LookAtConstraint
 Unity Parent Constraint,UnityEngine.Animations.ParentConstraint
 Unity Position Constraint,UnityEngine.Animations.PositionConstraint
 Unity Rotation Constraint,UnityEngine.Animations.RotationConstraint
 Unity Scale Constraint,UnityEngine.Animations.ScaleConstraint
+
+//Animation Components
+Animator,UnityEngine.Animator
 Animation,UnityEngine.Animation
 
 // Particle Systems and Rendering
