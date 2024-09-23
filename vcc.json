@@ -130,24 +130,24 @@
 				},
 				"legacyFolders": {},
 				"legacyFiles": {}
-			},
-			"0.0.9": {
-				"name": "vrchat.apolstar.vrcue",
-				"url" : "https://github.com/APOL-StarLight/VRC-Unity-Essentials/releases/download/0.0.9/-0.0.9.zip",
-				"displayName": "VRChat Unity Essentials",
-				"version": "0.0.9",
-				"unity": "2022.3",
-				"description": "A collection of essentials utilities for doing things in unity that are VRC Related",
-				"dependencies": {},
-				"gitDependencies": {},
-				"vpmDependencies": {},
-				"author": {
-				  "name": "Star and APOL",
-				  "email": "dont@email.me",
-				  "url": ""
-				},
-				"legacyFolders": {},
-				"legacyFiles": {}
+			// },
+			// "0.0.9": {
+			// 	"name": "vrchat.apolstar.vrcue",
+			// 	"url" : "https://github.com/APOL-StarLight/VRC-Unity-Essentials/releases/download/0.0.9/-0.0.9.zip",
+			// 	"displayName": "VRChat Unity Essentials",
+			// 	"version": "0.0.9",
+			// 	"unity": "2022.3",
+			// 	"description": "A collection of essentials utilities for doing things in unity that are VRC Related",
+			// 	"dependencies": {},
+			// 	"gitDependencies": {},
+			// 	"vpmDependencies": {},
+			// 	"author": {
+			// 	  "name": "Star and APOL",
+			// 	  "email": "dont@email.me",
+			// 	  "url": ""
+			// 	},
+			// 	"legacyFolders": {},
+			// 	"legacyFiles": {}
 			}
 		  }
 		}
