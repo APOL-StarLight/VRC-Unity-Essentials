@@ -11,7 +11,7 @@ public class ComponentLister : EditorWindow
 	private List<string> componentNames = new List<string>();
 	private Vector2 scrollPosition; // Variable for storing scroll position
 
-	[MenuItem("Tools/VRC Unity Essentials/Component Lister")]
+	[MenuItem("Tools/VRC Unity Essentials/Dev Tools/Component Lister")]
 	public static void ShowWindow()
 	{
 		GetWindow<ComponentLister>("Component Lister");
