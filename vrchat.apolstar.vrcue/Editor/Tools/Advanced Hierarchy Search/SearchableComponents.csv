@@ -1,0 +1,170 @@
+
+//=====Unity Components=====
+
+// Physics Components
+Rigidbody,UnityEngine.Rigidbody
+Collider,UnityEngine.Collider
+Box Collider,UnityEngine.BoxCollider
+Sphere Collider,UnityEngine.SphereCollider
+Capsule Collider,UnityEngine.CapsuleCollider
+Mesh Collider,UnityEngine.MeshCollider
+Cloth,UnityEngine.Cloth
+
+//Constraints Components
+Unity Aim Constraint,UnityEngine.Animations.AimConstraint
+Unity Look At Constraint,UnityEngine.Animations.LookAtConstraint
+Unity Parent Constraint,UnityEngine.Animations.ParentConstraint
+Unity Position Constraint,UnityEngine.Animations.PositionConstraint
+Unity Rotation Constraint,UnityEngine.Animations.RotationConstraint
+Unity Scale Constraint,UnityEngine.Animations.ScaleConstraint
+
+//Animation Components
+Animator,UnityEngine.Animator
+Animation,UnityEngine.Animation
+
+// Particle Systems and Rendering
+Particle System,UnityEngine.ParticleSystem
+Particle System Renderer,UnityEngine.ParticleSystemRenderer
+Trail Renderer,UnityEngine.TrailRenderer
+Line Renderer,UnityEngine.LineRenderer
+
+// Mesh and Rendering Components
+Mesh Filter,UnityEngine.MeshFilter
+Mesh Renderer,UnityEngine.MeshRenderer
+Skinned Mesh Renderer,UnityEngine.SkinnedMeshRenderer
+
+// Lighting and Visual Effects
+Light,UnityEngine.Light
+Flare Layer,UnityEngine.FlareLayer
+
+// Audio Components
+Audio Source,UnityEngine.AudioSource
+
+// Camera and Related Components
+Camera,UnityEngine.Camera
+
+// General and Transform Components
+Transform,UnityEngine.Transform
+
+
+
+//=====VRC Components=====
+
+VRC Avatar Descriptor,VRC.SDK3.Avatars.Components.VRCAvatarDescriptor
+VRC Aim Constraint,VRC.SDK3.Dynamics.Constraint.Components.VRCAimConstraint
+VRC Look At Constraint,VRC.SDK3.Dynamics.Constraint.Components.VRCLookAtConstraint
+VRC Scale Constraint,VRC.SDK3.Dynamics.Constraint.Components.VRCScaleConstraint
+VRC Parent Constraint,VRC.SDK3.Dynamics.Constraint.Components.VRCParentConstraint
+VRC Position Constraint,VRC.SDK3.Dynamics.Constraint.Components.VRCPositionConstraint
+VRC Rotation Constraint,VRC.SDK3.Dynamics.Constraint.Components.VRCRotationConstraint
+VRC Contact Receiver,VRC.SDK3.Dynamics.Contact.Components.VRCContactReceiver
+VRC Contact Sender,VRC.SDK3.Dynamics.Contact.Components.VRCContactSender
+VRC Head Chop,VRC.SDK3.Avatars.Components.VRCHeadChop
+VRC PhysBone,VRC.SDK3.Dynamics.PhysBone.Components.VRCPhysBone
+VRC PhysBone Collider,VRC.SDK3.Dynamics.PhysBone.Components.VRCPhysBoneCollider
+VRC Pipeline Manager,VRC.Core.PipelineManager
+VRC Spatial Audio Source,VRC.SDK3.Avatars.Components.VRCSpatialAudioSource
+VRC Station,VRC.SDK3.Avatars.Components.VRCStation
+
+
+
+
+
+
+//=====Fury Components=====
+
+Fury,VF.Model.VRCFury
+
+
+VRC Fury AdvancedVisemes,VF.Model.VRCFury,VF.Model.Feature.Visemes
+VRC Fury Anchor Override Fix,VF.Model.VRCFury,VF.Model.Feature.AnchorOverrideFix2
+VRC Fury Apply During Upload,VF.Model.VRCFury,VF.Model.Feature.ApplyDuringUpload
+VRC Fury Armature Link,VF.Model.VRCFury,VF.Model.Feature.ArmatureLink
+VRC Fury BlendShape Link,VF.Model.VRCFury,VF.Model.Feature.BlendShapeLink
+VRC Fury Blendshape Optimizer,VF.Model.VRCFury,VF.Model.Feature.BlendshapeOptimizer
+VRC Fury Blink Controller,VF.Model.VRCFury,VF.Model.Feature.Blinking
+VRC Fury Cross Eye Fix,VF.Model.VRCFury,VF.Model.Feature.CrossEyeFix2
+VRC Fury Delete During Upload,VF.Model.VRCFury,VF.Model.Feature.DeleteDuringUpload
+VRC Fury Descriptor Debugger,VF.Model.VRCFury,VF.Model.Feature.DescriptorDebug
+VRC Fury Direct Tree Optimizer,VF.Model.VRCFury,VF.Model.Feature.DirectTreeOptimizer
+VRC Fury Droppable (World Constraint),VF.Model.VRCFury,VF.Model.Feature.WorldConstraint
+VRC Fury Fix Write Defaults,VF.Model.VRCFury,VF.Model.Feature.FixWriteDefaults
+VRC Fury Full Controller,VF.Model.VRCFury,VF.Model.Feature.FullController
+VRC Fury Gestures,VF.Model.VRCFury,VF.Model.Feature.GestureDriver
+VRC Fury Gizmo,VF.Model.VRCFury,VF.Model.Feature.Gizmo
+VRC Fury Global Collider,VF.Component.VRCFuryGlobalCollider
+VRC Fury Haptic Touch Reciever,VF.Component.VRCFuryHapticTouchReceiver
+VRC Fury Haptic Touch Sender,VF.Component.VRCFuryHapticTouchSender
+VRC Fury MMD Compatibility,VF.Model.VRCFury,VF.Model.Feature.MmdCompatibility
+VRC Fury Move of Rename Menu Item,VF.Model.VRCFury,VF.Model.Feature.MoveMenuItem
+VRC Fury Override Menu Icon,VF.Model.VRCFury,VF.Model.Feature.SetIcon
+VRC Fury Override Menu Settings,VF.Model.VRCFury,VF.Model.Feature.OverrideMenuSettings
+VRC Fury Remove Built-in Blinking,VF.Model.VRCFury,VF.Model.Feature.RemoveBlinking
+VRC Fury Remove Built-in Hand Gestures,VF.Model.VRCFury,VF.Model.Feature.RemoveHandGestures2
+VRC Fury Reorder Menu Item,VF.Model.VRCFury,VF.Model.Feature.ReorderMenuItem
+VRC Fury SPS Options,VF.Model.VRCFury,VF.Model.Feature.SpsOptions
+VRC Fury SPS Plug,VF.Component.VRCFuryHapticPlug
+VRC Fury SPS Socket,VF.Component.VRCFuryHapticSocket
+VRC Fury Security Pin Number,VF.Model.VRCFury,VF.Model.Feature.SecurityLock
+VRC Fury Security Restricted,VF.Model.VRCFury,VF.Model.Feature.SecurityRestricted
+VRC Fury Senky Gesture Driver,VF.Model.VRCFury,VF.Model.Feature.SenkyGestureDriver
+VRC Fury Show In First Person,VF.Model.VRCFury,VF.Model.Feature.ShowInFirstPerson
+VRC Fury Toes Puppet,VF.Model.VRCFury,VF.Model.Feature.Toes
+VRC Fury Toggle,VF.Model.VRCFury,VF.Model.Feature.Toggle
+VRC Fury Unlimited Parameters,VF.Model.VRCFury,VF.Model.Feature.UnlimitedParameters
+VRC Fury When-Talking State,VF.Model.VRCFury,VF.Model.Feature.Talking
+
+
+
+
+
+//=====Modular Avatar Components=====
+
+Modular Avatar Menu Install Target,nadena.dev.modular_avatar.core.ModularAvatarMenuInstallTarget
+Modular Avatar Blendshape Sync,nadena.dev.modular_avatar.core.ModularAvatarBlendshapeSync
+Modular Avatar Bone Proxy,nadena.dev.modular_avatar.core.ModularAvatarBoneProxy
+Modular Avatar Menu Group,nadena.dev.modular_avatar.core.ModularAvatarMenuGroup
+Modular Avatar World Fixed Object,nadena.dev.modular_avatar.core.ModularAvatarWorldFixedObject
+Modular Avatar Visible Head Accessory,nadena.dev.modular_avatar.core.ModularAvatarVisibleHeadAccessory
+Modular Avatar Scale Adjuster,nadena.dev.modular_avatar.core.ModularAvatarScaleAdjuster
+Modular Avatar Replace Object,nadena.dev.modular_avatar.core.ModularAvatarReplaceObject
+Modular Avatar PB Blocker,nadena.dev.modular_avatar.core.ModularAvatarPBBlocker
+Modular Avatar Parameters,nadena.dev.modular_avatar.core.ModularAvatarParameters
+Modular Avatar Mesh Settings,nadena.dev.modular_avatar.core.ModularAvatarMeshSettings
+Modular Avatar Merge Blend Tree,nadena.dev.modular_avatar.core.ModularAvatarMergeBlendTree
+Modular Avatar Merge Armature,nadena.dev.modular_avatar.core.ModularAvatarMergeArmature
+Modular Avatar Merge Animator,nadena.dev.modular_avatar.core.ModularAvatarMergeAnimator
+Modular Avatar Menu Item,nadena.dev.modular_avatar.core.ModularAvatarMenuItem
+Modular Avatar Menu Installer,nadena.dev.modular_avatar.core.ModularAvatarMenuInstaller
+
+
+
+// ======Final IK Components=====
+Transform,UnityEngine.Transform
+Final IK Aim IK,RootMotion.FinalIK.AimIK
+Final IK Biped IK,RootMotion.FinalIK.BipedIK
+Final IK CCD IK,RootMotion.FinalIK.CCDIK
+Final IK FABRIK,RootMotion.FinalIK.FABRIK
+Final IK FABRIK Root,RootMotion.FinalIK.FABRIKRoot
+Final IK Arm Bending (FBBIK),RootMotion.FinalIK.FBBIKArmBending
+Final IK Head Effector (FBBIK),RootMotion.FinalIK.FBBIKHeadEffector
+Final IK Full Body Biped IK,RootMotion.FinalIK.FullBodyBipedIK
+Final IK Grounder FBBIK,RootMotion.FinalIK.GrounderFBBIK
+Final IK Grounder IK,RootMotion.FinalIK.GrounderIK
+Final IK Grounder Quadruped,RootMotion.FinalIK.GrounderQuadruped
+Final IK Grounder VRIK,RootMotion.FinalIK.GrounderVRIK
+Final IK IK Execution Order,RootMotion.FinalIK.IKExecutionOrder
+Final IK Leg IK,RootMotion.FinalIK.LegIK
+Final IK Limb IK,RootMotion.FinalIK.LimbIK
+Final IK Look At IK,RootMotion.FinalIK.LookAtIK
+Final IK Rotation Limit Angle,RootMotion.FinalIK.RotationLimitAngle
+Final IK Rotation Limit Hinge,RootMotion.FinalIK.RotationLimitHinge
+Final IK Rotation Limit Polygonal,RootMotion.FinalIK.RotationLimitPolygonal
+Final IK Rotation Limit Spline,RootMotion.FinalIK.RotationLimitSpline
+Final IK Trigonometric IK,RootMotion.FinalIK.TrigonometricIK
+Final IK Twist Relaxer,RootMotion.FinalIK.TwistRelaxer
+Final IK VRIK,RootMotion.FinalIK.VRIK
+
+
+
+

@@ -1,0 +1,18 @@
+{
+	"name": "vrchat.apolstar.vrcue",
+	"url" : "ignore for now",
+	"displayName": "VRChat Unity Essentials",
+	"version": "0.0.11",
+	"description": "A collection of essentials utilities for doing things in unity that are VRC Related",
+	"dependencies": {},
+	"gitDependencies": {},
+	"vpmDependencies": {},
+	"unity": "2022.3",
+	"author": {
+		"name": "Star and APOL Assets",
+		"email": "dont@email.me",
+		"url": ""
+	},
+	"legacyFolders": {},
+	"legacyFiles": {}
+}
