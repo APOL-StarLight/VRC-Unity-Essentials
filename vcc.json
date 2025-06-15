@@ -23,6 +23,24 @@
 				},
 				"legacyFolders": {},
 				"legacyFiles": {}
+			},
+			"Dev": {
+				"name": "vrchat.apolstar.vrcue",
+				"url" : "https://github.com/APOL-StarLight/VRC-Unity-Essentials/releases/download/Dev/-Dev.zip",
+				"displayName": "VRChat Unity Essentials",
+				"version": "Dev",
+				"unity": "2022.3",
+				"description": "A collection of essentials utilities for doing things in unity that are VRC Related",
+				"dependencies": {},
+				"gitDependencies": {},
+				"vpmDependencies": {},
+				"author": {
+				  "name": "Star and APOL",
+				  "email": "dont@email.me",
+				  "url": ""
+				},
+				"legacyFolders": {},
+				"legacyFiles": {}
 			}
 		  }
 		}
